@@ -1,7 +1,7 @@
 package controle;
 
 import modelo.BST;
-// import modelo.NoAluno;
+import modelo.NoAluno;
 
 public class TesteInserir {
 
@@ -22,13 +22,12 @@ public class TesteInserir {
 
 		// System.out.println(arv.inOrdem());
 		
-		/*NoAluno[] alunos = arv.busca("Sola");
+		
+		NoAluno[] alunos = arv.busca("Sola");
 		
 		for (int i = 0; alunos[i] != null; i++) {
-			System.out.println(alunos[i].toString()+"\n");
-		}*/
-		
-		arv.busca("Sola");
+			System.out.println(alunos[i].toString());
+		}
 		
 		
 	}

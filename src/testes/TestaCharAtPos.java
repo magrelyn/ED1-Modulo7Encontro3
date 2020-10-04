@@ -7,7 +7,7 @@ public class TestaCharAtPos {
 		StringManipulator a = new StringManipulator("boyka");
 		System.out.println(			   a.isLessThan("weslley"));
 		
-		System.out.println(StringManipulatorStatic.isLessThan("boyka", "weslley"));
+		System.out.println(StringManipulatorStatic.isLessThan("sola", "sola"));
 
 	}
 

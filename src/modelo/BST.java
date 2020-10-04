@@ -25,14 +25,14 @@ public class BST {
 	// metodo recursivo
 	private void inserirRec(NoAluno no, String dado) {
 
-		if (StringManipulatorStatic.isLessThan(dado, no.getInfo()))
+		if (StringManipulatorStatic.isLessThan(dado, no.getInfo())) {
 			if (no.getEsq() == null) {
 				NoAluno node = new NoAluno(dado);
 				no.setEsq(node);
 			} else {
 				inserirRec(no.getEsq(), dado);
 			}
-		else {
+		} else {
 			if (no.getDir() == null) {
 				NoAluno node = new NoAluno(dado);
 				no.setDir(node);
@@ -95,41 +95,36 @@ public class BST {
 
 	}
 
-	static NoAluno alunos[] = new NoAluno[400];
+	public static NoAluno alunos[] = new NoAluno[400];
 	// static NoAluno alunos[];
 
-	public /*NoAluno[]*/ void busca(String name) {
+	public NoAluno[] busca(String name) {
 
-		/*if (this.raiz == null) {
+		if (this.raiz == null)
 			return alunos;
-		} else
-			return buscaRec(this.raiz, name);*/
-		
-		if (this.raiz == null) {
-			System.out.println("vazio");
-		} else
-			buscaRec(this.raiz, name);
+		else
+			return buscaRec(this.raiz, name);
 
 	}
 
-	private /*NoAluno[]*/ void buscaRec(NoAluno no, String name) {
-		// int i = 0;
+	static int i = 0;
+
+	private NoAluno[] buscaRec(NoAluno no, String name) {
 
 		if (no.getInfo().equals(name)) {
-			/*alunos[i] = no;
-			i++;*/
-			
-			System.out.println(no);
+			alunos[i] = no;
+			i++;
 		}
-		
-		if (StringManipulatorStatic.isLessThan(name, no.getInfo()) || no.getInfo().equals(name)) {
-			if(no.getEsq() != null)
-				buscaRec(no.getEsq(), name);
-		}else
-			if(no.getDir() != null)
-				buscaRec(no.getDir(), name);
 
-		// return alunos;
+		if (!StringManipulatorStatic.isLessThan(name, no.getInfo()) || no.getInfo().equals(name)) {
+			if (no.getDir() != null)
+				buscaRec(no.getDir(), name);
+		} else {
+			if (no.getEsq() != null)
+				buscaRec(no.getEsq(), name);
+		}
+
+		return alunos;
 	}
 
 }

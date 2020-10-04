@@ -5,7 +5,7 @@ public class StringManipulatorStatic {
 	public static boolean isLessThan(String a, String b) {
 
 		if (a.equals(b))
-			return true;
+			return false;
 
 		char[] arrayA = a.toLowerCase().toCharArray();
 		char[] arrayB = b.toLowerCase().toCharArray();
