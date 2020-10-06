@@ -2,6 +2,7 @@ package controle;
 
 import modelo.BST;
 import modelo.NoAluno;
+import util.Lista;
 
 public class Testes {
 
@@ -17,19 +18,15 @@ public class Testes {
 		arv.inserir("Nicolas");
 		arv.inserir("Marcelo");
 
-		System.out.println("Arvore em ordem: " + arv.inOrdem());
+		// System.out.println("Arvore em ordem: " + arv.inOrdem());
 		
-		/*System.out.println("Alunos com nome Nicolas: ");
+		System.out.println("Alunos com nome Nicolas: ");
 		
-		NoAluno[] alunos = arv.busca("Nicolas");
+		System.out.println(arv.busca("Nicolas").toString());
 		
-		for (int i = 0; alunos[i] != null; i++) {
-			System.out.println(alunos[i].toString());
-		}*/
+		// arv.remover("Marcelo");
 		
-		arv.remover("Giovanna");
-		
-		System.out.println("Arvore em ordem: " + arv.inOrdem());
+		// System.out.println("Arvore em ordem: " + arv.inOrdem());
 		
 		
 	}

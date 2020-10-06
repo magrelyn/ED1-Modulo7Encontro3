@@ -1,4 +1,4 @@
-package testes;
+package util;
 
 
 public class TestaCharAtPos {

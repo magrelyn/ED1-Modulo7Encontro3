@@ -1,10 +1,11 @@
 package modelo;
 
-import testes.StringManipulatorStatic;
+import util.Lista;
+import util.StringManipulatorStatic;
 
 public class BST {
 	
-	private NoAluno raiz;
+	private	 NoAluno raiz;
 
 	public BST() {
 	}
@@ -98,10 +99,15 @@ public class BST {
 
 	}
 
-	public static NoAluno alunos[] = new NoAluno[400];
+	//private static NoAluno alunos[] = new NoAluno[400];
+	
 	// static NoAluno alunos[];
+	
+	private static Lista<NoAluno> alunos;
 
-	public NoAluno[] busca(String name) {
+	public Lista<NoAluno> busca(String name) {
+		
+		alunos = new Lista<NoAluno>();
 
 		if (this.raiz == null)
 			return alunos;
@@ -110,13 +116,10 @@ public class BST {
 
 	}
 
-	static int i = 0;
-
-	private NoAluno[] buscaRec(NoAluno no, String name) {
+	private Lista<NoAluno> buscaRec(NoAluno no, String name) {
 
 		if (no.getInfo().equals(name)) {
-			alunos[i] = no;
-			i++;
+			alunos.adiciona(no);
 		}
 
 		if (!StringManipulatorStatic.isLessThan(name, no.getInfo()) || no.getInfo().equals(name)) {
@@ -130,26 +133,6 @@ public class BST {
 		return alunos;
 	}
 
-	public void removew(String nome) {
-
-		if (this.raiz != null)
-			removeRecw(this.raiz, nome);
-	}
-
-	static NoAluno folha;
-
-	private void removeRecw(NoAluno no, String nome) {
-
-		if (no.getInfo().equals(nome))
-			folha = no;
-
-		if (no.getDir() != null)
-			removeRecw(no.getDir(), nome);
-		if (no.getEsq() != null)
-			removeRecw(no.getEsq(), nome);
-
-	}
-
 	public NoAluno remover(String nome) {
 		if (this.raiz == null)
 			return null;
@@ -157,7 +140,7 @@ public class BST {
 			return removerRec(this.raiz, nome);
 	}
 	
-	public NoAluno removerRec(NoAluno no, String nome) {
+	private NoAluno removerRec(NoAluno no, String nome) {
 		if (StringManipulatorStatic.isLessThan(nome, no.getInfo()))
 			no.setEsq(removerRec(no.getEsq(), nome));
 		else if (StringManipulatorStatic.isLessThan(no.getInfo(), nome))
@@ -171,7 +154,7 @@ public class BST {
 		return no;
 	}
 
-	void removerSucessor(NoAluno no) {
+	private void removerSucessor(NoAluno no) {
 		NoAluno t = no.getDir(); 		// será o minimo da subarvore direita
 		NoAluno pai = no; 				// será o pai de t
 		while (t.getEsq() != null) {
