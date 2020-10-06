@@ -4,7 +4,7 @@ import testes.StringManipulatorStatic;
 
 public class BST {
 	
-	public NoAluno raiz;
+	private NoAluno raiz;
 
 	public BST() {
 	}
@@ -150,25 +150,30 @@ public class BST {
 
 	}
 
-	public NoAluno remover_rec(NoAluno raiz, String chave) {
-		if (raiz == null)
+	public NoAluno remover(String nome) {
+		if (this.raiz == null)
 			return null;
-		if (StringManipulatorStatic.isLessThan(chave, raiz.getInfo()))
-			raiz.setEsq(remover_rec(raiz.getEsq(), chave));
-		else if (StringManipulatorStatic.isLessThan(raiz.getInfo(), chave))
-			raiz.setDir(remover_rec(raiz.getDir(), chave));
-		else if (raiz.getEsq() == null)
-			return raiz.getDir();
-		else if (raiz.getDir() == null)
-			return raiz.getEsq();
 		else
-			remover_sucessor(raiz);
-		return raiz;
+			return removerRec(this.raiz, nome);
+	}
+	
+	public NoAluno removerRec(NoAluno no, String nome) {
+		if (StringManipulatorStatic.isLessThan(nome, no.getInfo()))
+			no.setEsq(removerRec(no.getEsq(), nome));
+		else if (StringManipulatorStatic.isLessThan(no.getInfo(), nome))
+			no.setDir(removerRec(no.getDir(), nome));
+		else if (no.getEsq() == null)
+			return no.getDir();
+		else if (no.getDir() == null)
+			return no.getEsq();
+		else
+			removerSucessor(no);
+		return no;
 	}
 
-	void remover_sucessor(NoAluno raiz) {
-		NoAluno t = raiz.getDir(); /* será o mínimo da subárvore direita */
-		NoAluno pai = raiz; /* será o pai de t */
+	void removerSucessor(NoAluno no) {
+		NoAluno t = no.getDir(); 		// será o minimo da subarvore direita
+		NoAluno pai = no; 				// será o pai de t
 		while (t.getEsq() != null) {
 			pai = t;
 			t = t.getEsq();
@@ -177,7 +182,7 @@ public class BST {
 			pai.setEsq(t.getDir());
 		else
 			pai.setDir(t.getDir());
-		raiz.setInfo(t.getInfo());
+		no.setInfo(t.getInfo());
 	}
 
 }

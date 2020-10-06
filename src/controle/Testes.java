@@ -18,8 +18,6 @@ public class Testes {
 		arv.inserir("Marcelo");
 
 		System.out.println("Arvore em ordem: " + arv.inOrdem());
-		System.out.println("\nArvore em ordem: " + arv.inOrdem());
-		System.out.println("\nArvore em ordem: " + arv.inOrdem());
 		
 		/*System.out.println("Alunos com nome Nicolas: ");
 		
@@ -29,9 +27,9 @@ public class Testes {
 			System.out.println(alunos[i].toString());
 		}*/
 		
-		// arv.remover_rec(arv.raiz, "Yasmin");
+		arv.remover("Giovanna");
 		
-		// System.out.println("\nArvore em ordem: " + arv.inOrdem());
+		System.out.println("Arvore em ordem: " + arv.inOrdem());
 		
 		
 	}
