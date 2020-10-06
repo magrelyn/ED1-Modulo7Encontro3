@@ -1,12 +1,11 @@
 package controle;
 
 import modelo.BST;
-import modelo.NoAluno;
-import util.Lista;
 
 public class Testes {
 
 	public static void main(String[] args) {
+		
 		BST arv = new BST();
 		arv.inserir("Nicolas");
 		arv.inserir("Giovanna");
@@ -18,17 +17,16 @@ public class Testes {
 		arv.inserir("Nicolas");
 		arv.inserir("Marcelo");
 
-		// System.out.println("Arvore em ordem: " + arv.inOrdem());
-		
-		System.out.println("Alunos com nome Nicolas: ");
-		
+		System.out.println("Arvore em ordem: " + arv.inOrdem());
+
+		System.out.print("Alunos com nome Nicolas: ");
+
 		System.out.println(arv.busca("Nicolas").toString());
-		
-		// arv.remover("Marcelo");
-		
-		// System.out.println("Arvore em ordem: " + arv.inOrdem());
-		
-		
+
+		arv.remover("Marcelo");
+
+		System.out.println("Arvore em ordem: " + arv.inOrdem());
+
 	}
 
 }
