@@ -3,6 +3,7 @@ package modelo;
 import testes.StringManipulatorStatic;
 
 public class BST {
+	
 	public NoAluno raiz;
 
 	public BST() {
@@ -68,15 +69,17 @@ public class BST {
 		return s.toString();
 
 	}
+	
+	static StringBuilder s2;
 
 	public String inOrdem() {
+		
+		s2 = new StringBuilder();
 
 		if (this.raiz != null)
 			return inOrdemRec(this.raiz);
 		return "Arvore vazia";
 	}
-
-	static StringBuilder s2 = new StringBuilder();
 
 	// metodo recursivo
 	private String inOrdemRec(NoAluno no) {
@@ -125,6 +128,56 @@ public class BST {
 		}
 
 		return alunos;
+	}
+
+	public void removew(String nome) {
+
+		if (this.raiz != null)
+			removeRecw(this.raiz, nome);
+	}
+
+	static NoAluno folha;
+
+	private void removeRecw(NoAluno no, String nome) {
+
+		if (no.getInfo().equals(nome))
+			folha = no;
+
+		if (no.getDir() != null)
+			removeRecw(no.getDir(), nome);
+		if (no.getEsq() != null)
+			removeRecw(no.getEsq(), nome);
+
+	}
+
+	public NoAluno remover_rec(NoAluno raiz, String chave) {
+		if (raiz == null)
+			return null;
+		if (StringManipulatorStatic.isLessThan(chave, raiz.getInfo()))
+			raiz.setEsq(remover_rec(raiz.getEsq(), chave));
+		else if (StringManipulatorStatic.isLessThan(raiz.getInfo(), chave))
+			raiz.setDir(remover_rec(raiz.getDir(), chave));
+		else if (raiz.getEsq() == null)
+			return raiz.getDir();
+		else if (raiz.getDir() == null)
+			return raiz.getEsq();
+		else
+			remover_sucessor(raiz);
+		return raiz;
+	}
+
+	void remover_sucessor(NoAluno raiz) {
+		NoAluno t = raiz.getDir(); /* será o mínimo da subárvore direita */
+		NoAluno pai = raiz; /* será o pai de t */
+		while (t.getEsq() != null) {
+			pai = t;
+			t = t.getEsq();
+		}
+		if (pai.getEsq() == t)
+			pai.setEsq(t.getDir());
+		else
+			pai.setDir(t.getDir());
+		raiz.setInfo(t.getInfo());
 	}
 
 }

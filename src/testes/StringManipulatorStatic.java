@@ -1,7 +1,13 @@
 package testes;
 
 public class StringManipulatorStatic {
-
+	
+	/**
+	 * Verifica se a String <i>a</i> é menor que a String <i>b</i> na ordem alfabetica.
+	 * @param a String a ser verificada como menor que <i>b</i>.
+	 * @param b String a ser verificada como maior que <i>a</i>.
+	 * @return true caso seja menor, false caso nao
+	 */
 	public static boolean isLessThan(String a, String b) {
 
 		if (a.equals(b))
