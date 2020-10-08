@@ -136,6 +136,10 @@ public class BST {
 	public NoAluno remover(String nome) {
 		if (this.raiz == null)
 			return null;
+		else if(this.raiz.getInfo().equals(nome)) {
+			this.raiz = null;
+			return null;
+		}
 		else
 			return removerRec(this.raiz, nome);
 	}
